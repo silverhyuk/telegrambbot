@@ -12,10 +12,13 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.Optional;
 
+/**
+ * @see "https://github.com/rubenlagus/TelegramBotsExample/tree/master/src/main/java/org/telegram/updateshandlers"
+ */
 @Component
 public class ZerosllBot extends TelegramLongPollingBot {
 
-    Logger log = LoggerFactory.getLogger(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     private final ProjectProperties projectProperties;
 
     public ZerosllBot(ProjectProperties projectProperties) {
