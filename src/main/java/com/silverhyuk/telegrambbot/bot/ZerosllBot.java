@@ -1,5 +1,6 @@
-package com.silverhyuk.telegrambbot;
+package com.silverhyuk.telegrambbot.bot;
 
+import com.silverhyuk.telegrambbot.properties.ProjectProperties;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -20,7 +21,7 @@ public class ZerosllBot extends TelegramLongPollingBot {
         System.out.println(update.getMessage());
         SendMessage sn = new SendMessage();
         sn.setChatId(update.getMessage().getChatId());
-        sn.setText("asdasdasd");
+        sn.setText(update.getMessage().getText());
         //sn.setReplyToMessageId(update.getMessage().getMessageId());
         try {
             execute(sn);

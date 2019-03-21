@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.ApiContextInitializer;
 
 @SpringBootApplication
-public class TelegrambbotApplication {
+public class BotApplication {
 
     public static void main(String[] args) {
         ApiContextInitializer.init();
-        SpringApplication.run(TelegrambbotApplication.class, args);
+        SpringApplication.run(BotApplication.class, args);
     }
 }
