@@ -18,7 +18,7 @@ import java.util.Optional;
 @Component
 public class ZerosllBot extends TelegramLongPollingBot {
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final ProjectProperties projectProperties;
 
     public ZerosllBot(ProjectProperties projectProperties) {
