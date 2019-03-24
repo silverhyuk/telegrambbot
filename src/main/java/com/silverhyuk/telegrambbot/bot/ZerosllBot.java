@@ -20,6 +20,7 @@ public class ZerosllBot extends TelegramLongPollingBot {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final ProjectProperties projectProperties;
+    private final String MY_ID_COMMAND = "/my_id";
 
     public ZerosllBot(ProjectProperties projectProperties) {
         this.projectProperties = projectProperties;
@@ -32,17 +33,29 @@ public class ZerosllBot extends TelegramLongPollingBot {
         String userFirstName = Optional.ofNullable(message.getFrom().getFirstName()).orElse("");
 
         log.info("{} : {}", userLastName+userFirstName, message.getText());
-        //System.out.println(update.getMessage());
+        System.out.println(update.getMessage());
+        executeSendMessage(update);
+    }
+
+    private void executeSendMessage(Update update) {
         SendMessage sn = new SendMessage();
         sn.setChatId(update.getMessage().getChatId());
-        sn.setText(update.getMessage().getText());
+        String text = Optional.ofNullable(update.getMessage().getText()).orElse("empty");
+        if(MY_ID_COMMAND.equals(text)) {
+            sn.setText("내아이디 : " + Long.toString(update.getMessage().getChatId()));
+        }else{
+            sn.setText(text);
+        }
+
+
         //sn.setReplyToMessageId(update.getMessage().getMessageId());
         try {
-            execute(sn);
+            super.execute(sn);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public String getBotUsername() {
